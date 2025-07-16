@@ -1,0 +1,60 @@
+
+        <html><head><title>Fraud Analysis Report</title></head><body>
+        <h1>Fraud Analysis Report</h1>
+        <p><strong>Total Transactions:</strong> 2000<br>
+        <strong>Kaggle:</strong> 1000 &nbsp;&nbsp; <strong>Bank:</strong> 0<br>
+        <strong>Fraud Rate:</strong> 0.20%</p>
+        <h2>Summary Table</h2>
+        <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>is_fraud</th>
+      <th>data_source</th>
+      <th>transaction_count</th>
+      <th>total_amount</th>
+      <th>avg_amount</th>
+      <th>min_amount</th>
+      <th>max_amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>bank_sim</td>
+      <td>996</td>
+      <td>0.00</td>
+      <td>0.00000</td>
+      <td>0.0</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>kaggle_fraud</td>
+      <td>1000</td>
+      <td>88556.33</td>
+      <td>88.55633</td>
+      <td>0.0</td>
+      <td>3502.11</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>bank_sim</td>
+      <td>4</td>
+      <td>0.00</td>
+      <td>0.00000</td>
+      <td>0.0</td>
+      <td>0.00</td>
+    </tr>
+  </tbody>
+</table><br><br>
+        <h2>Visualizations</h2>
+        <h3>Fraud vs Non-Fraud</h3>
+        <img src='combined_fraud_bar_20250524.png' width='800'><br>
+        <h3>Amount Distribution by Fraud</h3>
+        <img src='amount_distribution_log_20250524.png' width='800'><br>
+        <h3>Data Source Distribution</h3>
+        <img src='source_distribution_20250524.png' width='600'><br>
+        <h3>Average Amount by Source and Fraud</h3>
+        <img src='avg_by_source_fraud_20250524.png' width='800'>
+        </body></html>
+        

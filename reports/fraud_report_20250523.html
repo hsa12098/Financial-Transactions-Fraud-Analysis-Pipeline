@@ -1,0 +1,122 @@
+
+    <html>
+    <head>
+        <title>Financial Transactions Fraud Report</title>
+        <style>
+            body { font-family: Arial, sans-serif; margin: 20px; }
+            h1, h2, h3 { color: #2c3e50; }
+            table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
+            th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+            th { background-color: #f2f2f2; }
+            tr:nth-child(even) { background-color: #f9f9f9; }
+            .chart-container { margin: 20px 0; }
+            .summary { background-color: #f8f9fa; padding: 15px; border-radius: 5px; margin-bottom: 20px; }
+            .dataset-section { border: 1px solid #ddd; padding: 15px; margin-bottom: 20px; border-radius: 5px; }
+            .comparison { background-color: #e9f7ef; padding: 15px; border-radius: 5px; margin: 20px 0; }
+        </style>
+    </head>
+    <body>
+        <h1>Financial Transactions Fraud Report</h1>
+        <p>Generated on: 2025-05-23 12:53:49</p>
+        
+        <div class="summary">
+            <h2>Overall Dataset Summary</h2>
+            <p>Total transactions processed: 4000</p>
+            <p>Data sources: kaggle_fraud, bank_sim</p>
+            <p>Time period: 2025-05-23 12:39:39 to 2025-05-23 12:39:39</p>
+            <p>Total fraud transactions: 8 (0.20%)</p>
+            <p>Total amount processed: $177112.66</p>
+        </div>
+
+        <h2>Fraud Detection Summary</h2>
+        <table>
+            <tr>
+                <th>Is Fraud</th>
+                <th>Data Source</th>
+                <th>Transaction Count</th>
+                <th>Total Amount</th>
+                <th>Average Amount</th>
+                <th>Min Amount</th>
+                <th>Max Amount</th>
+            </tr>
+    
+            <tr>
+                <td>No</td>
+                <td>kaggle_fraud</td>
+                <td>2000</td>
+                <td>$177112.66</td>
+                <td>$88.56</td>
+                <td>$0.00</td>
+                <td>$3502.11</td>
+            </tr>
+        
+            <tr>
+                <td>No</td>
+                <td>bank_sim</td>
+                <td>1992</td>
+                <td>$0.00</td>
+                <td>$0.00</td>
+                <td>$0.00</td>
+                <td>$0.00</td>
+            </tr>
+        
+            <tr>
+                <td>Yes</td>
+                <td>bank_sim</td>
+                <td>8</td>
+                <td>$0.00</td>
+                <td>$0.00</td>
+                <td>$0.00</td>
+                <td>$0.00</td>
+            </tr>
+        </table>
+        <h2>Combined Dataset Visualizations</h2>
+        
+        <div class="chart-container">
+            <h3>Fraud vs Non-Fraud Transactions (Combined)</h3>
+            <img src="combined_fraud_count_20250523.png" alt="Combined Fraud Count Chart" style="max-width: 100%;">
+        </div>
+        
+        <div class="chart-container">
+            <h3>Transaction Amount Distribution by Fraud Status (Combined)</h3>
+            <img src="combined_amount_dist_20250523.png" alt="Combined Amount Distribution" style="max-width: 100%;">
+        </div>
+        
+        <div class="chart-container">
+            <h3>Transaction Distribution by Data Source</h3>
+            <img src="source_dist_20250523.png" alt="Source Distribution" style="max-width: 100%;">
+        </div>
+    
+        <div class="dataset-section">
+            <h2>Kaggle Fraud Dataset Analysis</h2>
+    
+        <div class="summary">
+            <h3>Dataset Summary</h3>
+            <p>Total transactions: 2000</p>
+            <p>Fraud transactions: 0 (0.00%)</p>
+            <p>Total amount: $177112.66</p>
+            <p>Average transaction amount: $88.56</p>
+        </div>
+    
+        <div class="chart-container">
+            <h3>Fraud vs Non-Fraud Transactions (Kaggle Dataset)</h3>
+            <img src="kaggle_fraud_count_20250523.png" alt="Kaggle Fraud Count Chart" style="max-width: 100%;">
+        </div>
+        
+        <div class="chart-container">
+            <h3>Transaction Amount Distribution by Fraud Status (Kaggle Dataset)</h3>
+            <img src="kaggle_amount_dist_20250523.png" alt="Kaggle Amount Distribution" style="max-width: 100%;">
+        </div>
+    </div>
+    
+        <div class="dataset-section">
+            <h2>Bank Simulation Dataset Analysis</h2>
+    
+        <div class="summary">
+            <h3>Dataset Summary</h3>
+            <p>Total transactions: 0</p>
+            <p>Fraud transactions: 0 (nan%)</p>
+            <p>Total amount: $0.00</p>
+            <p>Average transaction amount: $nan</p>
+        </div>
+    

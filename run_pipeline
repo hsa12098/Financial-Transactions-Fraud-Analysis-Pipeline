@@ -1,0 +1,43 @@
+#!/bin/bash
+# run_pipeline.sh
+
+echo "Starting Financial Transactions Pipeline"
+
+# Check if MySQL is running
+if ! systemctl is-active --quiet mysql; then
+    echo "Starting MySQL..."
+    sudo systemctl start mysql
+fi
+
+# Check if Kafka is running
+if ! nc -z localhost 9092; then
+    echo "Starting Kafka..."
+    docker-compose -f kafka-docker-compose.yml up -d
+    # Wait for Kafka to start
+    echo "Waiting for Kafka to start..."
+    sleep 15
+fi
+
+# Create topic if it doesn't exist
+echo "Creating Kafka topic..."
+docker exec -it kafka kafka-topics --create --topic transactions --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1 --if-not-exists
+
+# Initialize database
+echo "Setting up database..."
+mysql -u hamza -pshams1098 -e "CREATE DATABASE IF NOT EXISTS finance_db;"
+mysql -u hamza -pshams1098 finance_db < /home/hamza/DE/20212619_DS463_final/financial-transactions-project/sql/create_mysql_tables.sql
+
+# Run Kafka producers
+echo "Running Kafka producers..."
+python /home/hamza/DE/20212619_DS463_final/financial-transactions-project/kafka/producer1.py
+python /home/hamza/DE/20212619_DS463_final/financial-transactions-project/kafka/producer2.py
+
+# Run Spark consumer
+echo "Running Spark consumer..."
+spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.3.0,mysql:mysql-connector-java:8.0.28 /home/hamza/DE/20212619_DS463_final/financial-transactions-project/spark/consumer_mysql.py
+
+# Generate report
+echo "Generating report..."
+mysql -u hamza -pshams1098 finance_db -e "SELECT is_fraud, data_source, COUNT(*) as count, SUM(transaction_amount) as total_amount FROM transactions GROUP BY is_fraud, data_source" > /home/hamza/DE/20212619_DS463_final/financial-transactions-project/reports/fraud_summary_$(date +%Y%m%d).txt
+
+echo "Pipeline completed successfully!"
